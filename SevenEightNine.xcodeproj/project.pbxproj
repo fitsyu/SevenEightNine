@@ -196,6 +196,7 @@
 				TargetAttributes = {
 					E82A9FF52126B6E700F8D580 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 6LA7AQHNV7;
 						LastSwiftMigration = 0830;
 					};
 					E82AA00C2126B6E800F8D580 = {
@@ -411,7 +412,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6LA7AQHNV7;
 				INFOPLIST_FILE = SevenEightNine/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = o0o.SevenEightNine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -423,7 +426,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6LA7AQHNV7;
 				INFOPLIST_FILE = SevenEightNine/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = o0o.SevenEightNine;
 				PRODUCT_NAME = "$(TARGET_NAME)";
