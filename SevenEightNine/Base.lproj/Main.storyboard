@@ -1,22 +1,59 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="17G65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="SevenEightNine" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kE9-eK-c78">
+                                <rect key="frame" x="188.5" y="260" width="37" height="32.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
+                                <color key="textColor" red="0.00050258729609999997" green="0.76799660920000001" blue="0.65051549669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cpo-zM-HKi">
+                                <rect key="frame" x="183" y="352" width="51" height="31"/>
+                                <color key="onTintColor" red="0.00050258729609999997" green="0.76799660920000001" blue="0.65051549669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </switch>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uzK-4v-FYN">
+                                <rect key="frame" x="20" y="443" width="374" height="34"/>
+                                <color key="backgroundColor" red="0.00050258729609999997" green="0.76799660920000001" blue="0.65051549669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Use Case Trigger Button"/>
+                                <connections>
+                                    <action selector="triggerUseCase:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cRo-EL-HEs"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cpo-zM-HKi" firstAttribute="centerX" secondItem="kE9-eK-c78" secondAttribute="centerX" id="1GX-mD-gyW"/>
+                            <constraint firstItem="uzK-4v-FYN" firstAttribute="top" secondItem="cpo-zM-HKi" secondAttribute="bottom" constant="60" id="4KV-cW-f1Y"/>
+                            <constraint firstItem="kE9-eK-c78" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Aea-wX-tsu"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="uzK-4v-FYN" secondAttribute="trailing" id="YFN-Hj-EFp"/>
+                            <constraint firstItem="cpo-zM-HKi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bHh-x7-spo"/>
+                            <constraint firstItem="cpo-zM-HKi" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="grJ-4F-6IY"/>
+                            <constraint firstItem="uzK-4v-FYN" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="hoM-1v-0pI"/>
+                            <constraint firstItem="cpo-zM-HKi" firstAttribute="top" secondItem="kE9-eK-c78" secondAttribute="bottom" constant="59.5" id="mSa-Ze-I5T"/>
+                        </constraints>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina55"/>
+                    <connections>
+                        <outlet property="label" destination="kE9-eK-c78" id="TQO-hb-sDr"/>
+                        <outlet property="onOff" destination="cpo-zM-HKi" id="bys-vF-U5x"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

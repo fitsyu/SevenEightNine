@@ -8,18 +8,161 @@
 
 import UIKit
 
+
 class ViewController: UIViewController {
+    // MARK: Outlets
+    @IBOutlet weak var onOff: UISwitch!
+    @IBOutlet weak var label: UILabel!
+    
+    @IBAction func triggerUseCase(sender: UIButton)
+    {
+        let uc = App.useCase_TurningLampOnOff
+        uc.userInterface = self
+        uc.play()
+    }
+    
+}
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+// MARK: User Interface
+protocol UI
+{
+    func read() -> Bool
+    
+    func display(formattedOutput: String)
+}
+extension ViewController: UI
+{
+    func read() -> Bool {
+        return onOff.on
+    }
+    
+    func display(formattedOutput: String) {
+        label.text = formattedOutput
+    }
+}
+
+
+
+
+// MARK: BUSSINESS LOGIC
+protocol Interaction
+{
+    func process(input: Bool) -> Bool
+}
+class I: Interaction
+{
+ 
+    internal func process(input: Bool) -> Bool
+    {
+        var result: Bool = false
+        
+        // complex processing logic
+        if input == true && input != false || (input == !false)
+        {
+            result = true
+        }
+        else
+        {
+            result = false
+        }
+        
+        return result
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+}
+
+
+
+// MARK: PRESENTATION
+protocol Formatting
+{
+    func format(result: Bool) -> String
+}
+class P: Formatting
+{
+    internal func format(result: Bool) -> String
+    {
+        var textOut = ""
+        
+        if result == true
+        {
+            textOut = "On"
+        }
+        else
+        {
+            textOut = "Off"
+        }
+        
+        return textOut
     }
+}
 
 
+
+
+// MARK: Conductor
+protocol UseCase
+{
+    func play()
+}
+class TurningLampOnOff: UseCase
+{
+    var userInterface: UI?
+    var interactor: Interaction?
+    var formatter: Formatting?
+    
+    init(userInterface: UI?, interactor: Interaction?, formatter: Formatting?)
+    {
+        self.userInterface = userInterface
+        self.interactor = interactor
+        self.formatter = formatter
+    }
+    
+    func play()
+    {
+        // MAKE SURE ALL PARTY ARE AVAILABLE
+        guard
+            userInterface != nil
+                &&
+            interactor != nil
+                &&
+            formatter != nil
+        else {
+            fatalError("make sure all party for this use case set correctly")
+        }
+        
+        
+        
+        
+        // GET INPUT
+        let input = userInterface!.read()
+        
+        // PROCESS
+        let output = interactor!.process(input)
+        
+        // FORMAT
+        let niceOutput = formatter!.format(output)
+        
+        // DISPLAY
+        userInterface!.display(niceOutput)
+    }
+}
+
+
+class App
+{
+    
+    // List use cases here as a property of this class
+    
+    static var useCase_TurningLampOnOff: TurningLampOnOff {
+        // setup a use case
+        let i = I()
+        let p = P()
+        let UC = TurningLampOnOff(userInterface: nil, interactor: i, formatter: p)
+        return UC
+    }
+    
+    
 }
 
