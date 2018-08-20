@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var onOff: UISwitch!
     @IBOutlet weak var label: UILabel!
     
-    @IBAction func triggerUseCase(sender: UIButton)
+    @IBAction func triggerUseCase(_ sender: UIButton)
     {
         let uc = App.useCase_TurningLampOnOff
         uc.userInterface = self
@@ -29,15 +29,15 @@ protocol UI
 {
     func read() -> Bool
     
-    func display(formattedOutput: String)
+    func display(_ formattedOutput: String)
 }
 extension ViewController: UI
 {
     func read() -> Bool {
-        return onOff.on
+        return onOff.isOn
     }
     
-    func display(formattedOutput: String) {
+    func display(_ formattedOutput: String) {
         label.text = formattedOutput
     }
 }
@@ -48,12 +48,12 @@ extension ViewController: UI
 // MARK: BUSSINESS LOGIC
 protocol Interaction
 {
-    func process(input: Bool) -> Bool
+    func process(_ input: Bool) -> Bool
 }
 class I: Interaction
 {
  
-    internal func process(input: Bool) -> Bool
+    internal func process(_ input: Bool) -> Bool
     {
         var result: Bool = false
         
@@ -77,11 +77,11 @@ class I: Interaction
 // MARK: PRESENTATION
 protocol Formatting
 {
-    func format(result: Bool) -> String
+    func format(_ result: Bool) -> String
 }
 class P: Formatting
 {
-    internal func format(result: Bool) -> String
+    internal func format(_ result: Bool) -> String
     {
         var textOut = ""
         
