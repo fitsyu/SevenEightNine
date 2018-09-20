@@ -23,6 +23,7 @@ class ViewController: UIViewController {
     
 }
 
+// ==========================================================================================================
 
 // MARK: User Interface
 protocol UI
@@ -50,7 +51,7 @@ protocol Interaction
 {
     func process(_ input: Bool) -> Bool
 }
-class I: Interaction
+class Interactor: Interaction
 {
  
     internal func process(_ input: Bool) -> Bool
@@ -79,7 +80,7 @@ protocol Formatting
 {
     func format(_ result: Bool) -> String
 }
-class P: Formatting
+class Formatter: Formatting
 {
     internal func format(_ result: Bool) -> String
     {
@@ -98,7 +99,7 @@ class P: Formatting
     }
 }
 
-
+// ==========================================================================================================
 
 
 // MARK: Conductor
@@ -112,11 +113,11 @@ class TurningLampOnOff: UseCase
     var interactor: Interaction?
     var formatter: Formatting?
     
-    init(userInterface: UI?, interactor: Interaction?, formatter: Formatting?)
+    init(UIImplementer userInterface : UI?, interactionImplementer interactor: Interaction?, formattingImplementer formatter: Formatting?)
     {
-        self.userInterface = userInterface
-        self.interactor = interactor
-        self.formatter = formatter
+        self.userInterface  = userInterface
+        self.interactor     = interactor
+        self.formatter      = formatter
     }
     
     func play()
@@ -149,18 +150,18 @@ class TurningLampOnOff: UseCase
     }
 }
 
+// ==========================================================================================================
 
 class App
 {
-    
     // List use cases here as a property of this class
     
     static var useCase_TurningLampOnOff: TurningLampOnOff {
         // setup a use case
-        let i = I()
-        let p = P()
-        let UC = TurningLampOnOff(userInterface: nil, interactor: i, formatter: p)
-        return UC
+        let interactor = Interactor()
+        let formatter = Formatter()
+        let UseCase = TurningLampOnOff(UIImplementer: nil, interactionImplementer: interactor, formattingImplementer: formatter)
+        return UseCase
     }
     
     
