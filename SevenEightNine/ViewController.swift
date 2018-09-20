@@ -134,7 +134,7 @@ class TurningLampOnOff: UseCase
         }
         
         
-        
+
         
         // GET INPUT
         let input = userInterface!.read()
